@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!--
+  Персональний сайт-резюме Дениса Терещенка.
+  Зверстано за макетом, створеним у Figma.
+  Структура: header (навігація) → main (розділи) → footer (контакти).
+-->
+<html lang="en">
+<head>
+  <!-- Кодування, адаптивний viewport та опис сторінки для пошукових систем -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Denys Tereshchenko — International Business Administration student with experience in M&amp;A, Financial Due Diligence and Audit.">
+  <title>Denys Tereshchenko — CV</title>
+
+  <!-- Шрифт Inter з Google Fonts (той самий, що й у макеті Figma) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Підключення власних стилів -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ ШАПКА САЙТУ: логотип, меню, кнопка завантаження CV ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <!-- Логотип: посилання на початок сторінки -->
+      <a href="#hero" class="logo" aria-label="Back to top">DT<span class="accent">.</span></a>
+
+      <!-- Чекбокс + label реалізують «бургер»-меню на мобільних без JavaScript -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-hidden="true">
+      <label for="menu-toggle" class="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </label>
+
+      <!-- Основна навігація по розділах сторінки -->
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Кнопка завантаження PDF-версії резюме (відкривається в новій вкладці) -->
+      <a href="https://1drv.ms/b/c/89b595bb08322087/IQBc-A_6xALvR6qtrwS7xT41AfZkC_z7kRW4QkO4xgcWBoE?e=oVnOby"
+         class="btn btn-sand btn-small" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ ПЕРШИЙ ЕКРАН (HERO): ім'я, посада, короткий опис, фото ============ -->
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="availability"><span class="dot"></span>Open to M&amp;A and Investment Banking internships · 2027</p>
+          <p class="greeting">Hi, I'm</p>
+          <!-- Єдиний заголовок h1 на сторінці — ім'я -->
+          <h1 class="name">Denys Tereshchenko<span class="accent">.</span></h1>
+          <p class="role">M&amp;A / Transaction Services · International Business Administration</p>
+          <p class="bio">Finance-driven business student at the University of Bamberg and KNUTE Kyiv with hands-on experience in Financial Due Diligence, audit and private wealth management at Deloitte and ODDO BHF. I turn complex financials into clear, decision-ready insights — and aim to build a career in M&amp;A advisory in the DACH region.</p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-sand">Get in touch</a>
+            <a href="https://www.linkedin.com/in/denys-tereshchenko-99aa98305" class="btn btn-outline" target="_blank" rel="noopener">View LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Фото з декоративними елементами (кільце та крапка) -->
+        <figure class="hero-photo">
+          <img src="images/denys-tereshchenko.jpg" alt="Portrait of Denys Tereshchenko" width="864" height="1069">
+          <span class="deco-ring" aria-hidden="true"></span>
+          <span class="deco-dot" aria-hidden="true"></span>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ КЛЮЧОВІ ФАКТИ: чотири показники в рядок ============ -->
+    <section class="facts" aria-label="Key facts">
+      <ul class="container facts-list">
+        <li><strong>3</strong><span>internships at Deloitte &amp; ODDO BHF</span></li>
+        <li><strong>1.7</strong><span>GPA, University of Bamberg</span></li>
+        <li><strong>4</strong><span>languages spoken</span></li>
+        <li><strong>Top 5%</strong><span>nominated, Bayerische Elite Akademie</span></li>
+      </ul>
+    </section>
+
+    <!-- ============ ПРО МЕНЕ ============ -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <header class="section-heading">
+          <p class="kicker"><span class="dot"></span>About me</p>
+          <h2>Numbers, deals and clear thinking</h2>
+        </header>
+        <div class="about-text">
+          <p>I am a final-year student of International Business Administration, studying in parallel at the University of Bamberg (Germany) and Kyiv National University of Trade and Economics (Ukraine).</p>
+          <p class="muted">During my internships at Deloitte I worked on live buy- and sell-side mandates in Financial Due Diligence and supported audits of private-equity-backed companies. Earlier, at ODDO BHF, I prepared investment proposals for high-net-worth clients. Outside the office I lead the finance and legal team of Börsenverein Bamberg, analyse European M&amp;A deals for EMERGERS and publish sector articles in M&amp;A Review.</p>
+          <!-- Теги фокусних напрямів -->
+          <ul class="tags">
+            <li>Financial Due Diligence</li>
+            <li>Valuation</li>
+            <li>Financial Modelling</li>
+            <li>Capital Markets</li>
+            <li>DACH M&amp;A</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ДОСВІД РОБОТИ: кожне стажування — окремий article ============ -->
+    <section class="section section-sand" id="experience">
+      <div class="container">
+        <header class="section-heading">
+          <p class="kicker"><span class="dot"></span>Experience</p>
+          <h2>Where I have worked</h2>
+        </header>
+
+        <div class="jobs">
+          <article class="job-card">
+            <div class="job-meta">
+              <p class="date"><time datetime="2026-09">Sep</time> – <time datetime="2026-12">Dec 2026</time></p>
+              <h3>Deloitte</h3>
+              <p class="location">Nürnberg, Germany</p>
+            </div>
+            <div class="job-details">
+              <h4>M&amp;A / Transaction Services — Intern</h4>
+              <ul class="bullets">
+                <li>Drove key workstreams in Financial Due Diligence on live buy- and sell-side mandates: quality of earnings, working capital and net debt analysis.</li>
+                <li>Co-authored due diligence reports and valuation analyses; contributed to fact books and management presentations.</li>
+                <li>Built financial models and scenario analyses together with multidisciplinary deal teams.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job-card">
+            <div class="job-meta">
+              <p class="date"><time datetime="2026-03">Mar</time> – <time datetime="2026-08">Aug 2026</time></p>
+              <h3>Deloitte</h3>
+              <p class="location">Nürnberg, Germany</p>
+            </div>
+            <div class="job-details">
+              <h4>Audit &amp; Assurance — Intern</h4>
+              <ul class="bullets">
+                <li>Supported audit engagements for a private-equity-backed portfolio company: financial statement reviews and risk assessments.</li>
+                <li>Led data analysis and substantive testing on high-volume client data, strengthening internal control recommendations.</li>
+                <li>Presented audit findings and process improvement suggestions to senior managers.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job-card">
+            <div class="job-meta">
+              <p class="date"><time datetime="2025-10">Oct</time> – <time datetime="2025-12">Dec 2025</time></p>
+              <h3>ODDO BHF</h3>
+              <p class="location">Nürnberg, Germany</p>
+            </div>
+            <div class="job-details">
+              <h4>Private Wealth Management — Intern</h4>
+              <ul class="bullets">
+                <li>Developed investment proposals and portfolio performance reviews for high-net-worth clients.</li>
+                <li>Conducted market, sector and company research on equities, funds and structured products.</li>
+                <li>Built a client-experience concept and a screening model for Bavarian companies as prospective clients.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ОСВІТА: дві картки університетів ============ -->
+    <section class="section" id="education">
+      <div class="container">
+        <header class="section-heading">
+          <p class="kicker"><span class="dot"></span>Education</p>
+          <h2>Two universities, one focus</h2>
+        </header>
+
+        <div class="edu-grid">
+          <article class="edu-card">
+            <div class="edu-top">
+              <p class="date"><time datetime="2023-10">Oct 2023</time> – <time datetime="2027-02">Feb 2027</time></p>
+              <span class="badge">GPA 1.7</span>
+            </div>
+            <h3>University of Bamberg</h3>
+            <p class="degree">B.Sc. International Business Administration · Bamberg, Germany</p>
+            <ul class="bullets bullets-light">
+              <li>Nominated for the Bayerische Elite Akademie (top 5% of cohort)</li>
+              <li>Board member, Börsenverein Bamberg; Team Leader, Portfolio Management Competition</li>
+            </ul>
+          </article>
+
+          <article class="edu-card">
+            <div class="edu-top">
+              <p class="date"><time datetime="2021-09">Sep 2021</time> – <time datetime="2027-05">May 2027</time></p>
+              <span class="badge">GPA 1.3</span>
+            </div>
+            <h3>Kyiv National University of Trade and Economics</h3>
+            <p class="degree">B.Sc. International Business Administration · Kyiv, Ukraine</p>
+            <ul class="bullets bullets-light">
+              <li>Listed among the top 100 students in 2021 and 2022</li>
+              <li>Courses in EU law, international logistics and international business</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ПРОЄКТИ ТА ЛІДЕРСТВО: три картки ============ -->
+    <section class="section section-sand" id="projects">
+      <div class="container">
+        <header class="section-heading">
+          <p class="kicker"><span class="dot"></span>Projects &amp; leadership</p>
+          <h2>Beyond the internship</h2>
+        </header>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <span class="icon" aria-hidden="true">→</span>
+            <p class="project-type">Leadership · 2023–2026</p>
+            <h3>Börsenverein Bamberg</h3>
+            <p>Deputy Chairman &amp; Head of Finance &amp; Law. Led a team of 5, organised nationwide finance competitions and advised on legal and financial strategy.</p>
+          </article>
+          <article class="project-card">
+            <span class="icon" aria-hidden="true">→</span>
+            <p class="project-type">Research · ongoing</p>
+            <h3>EMERGERS</h3>
+            <p>Research Analyst in a student M&amp;A initiative: regular analysis of M&amp;A transactions and capital markets developments across Europe.</p>
+          </article>
+          <article class="project-card">
+            <span class="icon" aria-hidden="true">→</span>
+            <p class="project-type">Publication · 2026</p>
+            <h3>M&amp;A Review</h3>
+            <p>Author of industry analyses on the transformation of the Industrial/Automotive and Legal sectors in the DACH region.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ НАВИЧКИ: мови (шкали), IT-інструменти (теги), сертифікати ============ -->
+    <section class="section" id="skills">
+      <div class="container">
+        <header class="section-heading">
+          <p class="kicker"><span class="dot"></span>Skills &amp; certificates</p>
+          <h2>Toolkit</h2>
+        </header>
+
+        <div class="skills-grid">
+          <div class="skills-col">
+            <h3>Languages</h3>
+            <!-- Довжина смуги задається CSS-змінною --level -->
+            <ul class="languages">
+              <li style="--level: 100%"><span>Ukrainian</span><span class="level">Native</span></li>
+              <li style="--level: 100%"><span>Russian</span><span class="level">Native</span></li>
+              <li style="--level: 85%"><span>German</span><span class="level">C1 · DSH-2</span></li>
+              <li style="--level: 85%"><span>English</span><span class="level">C1</span></li>
+            </ul>
+          </div>
+
+          <div class="skills-col">
+            <h3>IT &amp; tools</h3>
+            <ul class="tags">
+              <li>Excel</li><li>PowerPoint</li><li>Power BI</li><li>SAP</li>
+              <li>R-Studio</li><li>Wolfram Mathematica</li><li>Python</li><li>C++</li>
+            </ul>
+          </div>
+
+          <div class="skills-col">
+            <h3>Certificates</h3>
+            <ul class="bullets">
+              <li>DSH-2 (C1 German)</li>
+              <li>Börsenführerschein</li>
+              <li>Funded Trader Challenge</li>
+              <li>The Complete Investment Banking Course</li>
+              <li>Excel: Financial Modelling &amp; Valuation</li>
+              <li>Python for Finance and Data Science</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ ПІДВАЛ: контакти та копірайт ============ -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <p class="kicker kicker-light"><span class="dot"></span>Contact</p>
+          <h2>Let's talk deals.</h2>
+          <p class="contact-note">Based in Nürnberg · open to opportunities across Germany, Austria and Switzerland.</p>
+        </div>
+
+        <!-- Тег address — семантичний блок контактної інформації -->
+        <address class="contact-list">
+          <p><span class="label">Email</span><a href="mailto:tereshchenko.denys12@gmail.com">tereshchenko.denys12@gmail.com</a></p>
+          <p><span class="label">Phone</span><a href="tel:+491789827623">+49 178 982 76 23</a></p>
+          <p><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/denys-tereshchenko-99aa98305" target="_blank" rel="noopener">linkedin.com/in/denys-tereshchenko</a></p>
+        </address>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="#hero" class="logo logo-small">DT<span class="accent">.</span></a>
+        <p>© 2026 Denys Tereshchenko · Personal CV website</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

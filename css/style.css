@@ -1,0 +1,921 @@
+/* =====================================================================
+   style.css — стилі сайту-резюме Дениса Терещенка
+   Палітра з макету Figma: Petrol blue #326586 та Sand mist #F4E9D4.
+   Підхід: desktop-first; адаптивність — медіазапитами в кінці файлу.
+   ===================================================================== */
+
+/* ---------- 1. CSS-змінні (дизайн-токени) ---------- */
+:root {
+  --petrol: #326586;        /* основний колір */
+  --petrol-dark: #28526e;   /* темніший відтінок для наведення */
+  --sand: #f4e9d4;          /* другий колір (Sand mist) */
+  --ink: #1c3a4f;           /* колір заголовків і тексту на світлому фоні */
+  --soft: #d3dfe8;          /* світлий текст на синьому фоні */
+  --muted: #55626d;         /* другорядний текст */
+  --line: #e2d5bc;          /* обведення тегів */
+  --white: #ffffff;
+
+  --container: 1200px;      /* ширина контенту, як у макеті */
+  --radius: 20px;           /* заокруглення карток */
+  --section-pad: 110px;     /* вертикальні відступи розділів */
+}
+
+/* ---------- 2. Базове скидання стилів ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;      /* плавна прокрутка до розділів */
+  scroll-padding-top: 88px;     /* щоб заголовки не ховалися під фіксованою шапкою */
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Контейнер обмежує ширину контенту та задає бічні поля */
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * 24px);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Акцентна крапка після логотипу та імені */
+.accent {
+  color: var(--sand);
+}
+
+/* Маленька кругла крапка — повторюваний елемент дизайну */
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--petrol);
+  flex-shrink: 0;
+}
+
+/* ---------- 3. Кнопки ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1.5px solid transparent;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);   /* легкий підйом кнопки при наведенні */
+}
+
+.btn-sand {
+  background: var(--sand);
+  color: var(--petrol);
+}
+
+.btn-sand:hover {
+  background: var(--white);
+}
+
+.btn-outline {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--petrol);
+}
+
+.btn-small {
+  padding: 11px 22px;
+  font-size: 14px;
+}
+
+/* ---------- 4. Шапка та навігація ---------- */
+.site-header {
+  position: sticky;              /* шапка залишається вгорі під час прокрутки */
+  top: 0;
+  z-index: 100;
+  background: var(--petrol);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 36px;
+}
+
+.main-nav a {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* Підкреслення пункту меню, що з'являється при наведенні */
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--sand);
+  transition: width 0.25s ease;
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+}
+
+/* Чекбокс і бургер приховані на десктопі */
+.menu-toggle,
+.burger {
+  display: none;
+}
+
+/* ---------- 5. Перший екран (Hero) ---------- */
+.hero {
+  background: var(--petrol);
+  color: var(--white);
+  padding: 96px 0 110px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 400px;   /* текст + фото фіксованої ширини */
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sand);
+}
+
+.availability .dot {
+  background: var(--sand);
+}
+
+.greeting {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--soft);
+  margin-bottom: -28px;               /* привітання стоїть впритул до імені */
+}
+
+.name {
+  font-size: clamp(48px, 5.2vw, 70px);   /* розмір плавно залежить від ширини екрана */
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.role {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.bio {
+  max-width: 700px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--soft);
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Фото та декоративні елементи позиціонуються відносно figure */
+.hero-photo {
+  position: relative;
+  width: 400px;
+  aspect-ratio: 420 / 520;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+.deco-ring {
+  position: absolute;
+  top: -40px;
+  right: -50px;
+  width: 140px;
+  height: 140px;
+  border: 3px solid var(--sand);
+  border-radius: 50%;
+}
+
+.deco-dot {
+  position: absolute;
+  left: -13px;
+  bottom: 14px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--sand);
+}
+
+/* ---------- 6. Ключові факти ---------- */
+.facts {
+  background: var(--sand);
+  padding: 48px 0;
+}
+
+.facts-list {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.facts-list strong {
+  display: block;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--petrol);
+}
+
+.facts-list span {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--petrol);
+}
+
+/* ---------- 7. Загальні стилі розділів ---------- */
+.section {
+  padding: var(--section-pad) 0;
+}
+
+.section-sand {
+  background: var(--sand);
+}
+
+.section-heading {
+  margin-bottom: 48px;
+}
+
+/* Надпис над заголовком розділу (kicker) */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--petrol);
+}
+
+h2 {
+  margin-top: 12px;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Список з маркерами-крапками */
+.bullets li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--petrol);
+}
+
+.bullets li:last-child {
+  margin-bottom: 0;
+}
+
+/* Теги (навички, фокусні напрями) */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tags li {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ---------- 8. Про мене ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  gap: 80px;
+}
+
+.about-grid .section-heading {
+  margin-bottom: 0;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-text p {
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- 9. Досвід ---------- */
+.jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.job-card {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 48px;
+  padding: 36px 40px;
+  background: var(--white);
+  border-radius: var(--radius);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* Тінь і легкий підйом картки при наведенні */
+.job-card:hover {
+  box-shadow: 0 16px 40px rgba(50, 101, 134, 0.15);
+  transform: translateY(-3px);
+}
+
+.date {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--petrol);
+}
+
+.job-meta h3 {
+  margin: 10px 0;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.location {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.job-details h4 {
+  margin-bottom: 14px;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+/* ---------- 10. Освіта ---------- */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.edu-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 36px;
+  border-radius: var(--radius);
+  background: var(--petrol);
+  color: var(--white);
+}
+
+.edu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.edu-card .date {
+  color: var(--sand);
+}
+
+.badge {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--sand);
+  color: var(--petrol);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.edu-card h3 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.degree {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--soft);
+}
+
+/* Світлий варіант списку для синіх карток */
+.bullets-light li {
+  font-size: 16px;
+  color: var(--white);
+}
+
+.bullets-light li::before {
+  background: var(--sand);
+}
+
+/* ---------- 11. Проєкти ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px;
+  border-radius: var(--radius);
+  background: var(--white);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(50, 101, 134, 0.15);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--petrol);
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.project-type {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--petrol);
+}
+
+.project-card h3 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.project-card p:last-child {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* ---------- 12. Навички ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 64px;
+}
+
+.skills-col h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.languages li {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.languages .level {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* Шкала рівня мови: фон — псевдоелемент ::after, заповнення — градієнт до --level */
+.languages li::after {
+  content: "";
+  flex-basis: 100%;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, var(--petrol) var(--level), var(--sand) var(--level));
+}
+
+.skills-col .bullets li {
+  font-size: 16px;
+}
+
+/* ---------- 13. Підвал (контакти) ---------- */
+.site-footer {
+  background: var(--petrol);
+  color: var(--white);
+  padding: var(--section-pad) 0 56px;
+}
+
+.kicker-light {
+  color: var(--sand);
+}
+
+.kicker-light .dot {
+  background: var(--sand);
+}
+
+.contact-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 48px;
+}
+
+.contact-note {
+  max-width: 620px;
+  margin-top: 18px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--soft);
+}
+
+.contact-list {
+  font-style: normal;              /* address за замовчуванням курсивний */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-list p {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact-list .label {
+  width: 80px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--sand);
+}
+
+.contact-list a {
+  font-size: 19px;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.contact-list a:hover {
+  border-color: var(--sand);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 14px;
+  color: var(--soft);
+}
+
+.logo-small {
+  font-size: 20px;
+}
+
+/* =====================================================================
+   14. АДАПТИВНІСТЬ (медіазапити)
+   ===================================================================== */
+
+/* --- Ноутбуки та планшети в альбомній орієнтації (до 1100px) --- */
+@media (max-width: 1100px) {
+  :root {
+    --section-pad: 88px;
+  }
+
+  .main-nav ul {
+    gap: 24px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr 340px;
+    gap: 56px;
+  }
+
+  .hero-photo {
+    width: 340px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .skills-grid {
+    gap: 40px;
+  }
+}
+
+/* --- Планшети (до 900px): мобільне меню, фото над текстом --- */
+@media (max-width: 900px) {
+  /* Показуємо бургер */
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    order: 3;
+  }
+
+  .burger span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--white);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* Меню перетворюється на випадну панель під шапкою */
+  .main-nav {
+    position: absolute;
+    top: 88px;
+    left: 0;
+    right: 0;
+    background: var(--petrol);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 24px 24px;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .main-nav a::after {
+    display: none;
+  }
+
+  /* Коли чекбокс увімкнено — меню розкривається, бургер стає хрестиком */
+  .menu-toggle:checked ~ .main-nav {
+    max-height: 420px;
+  }
+
+  .menu-toggle:checked ~ .burger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle:checked ~ .burger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked ~ .burger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .header-inner .btn-small {
+    margin-left: auto;
+  }
+
+  /* Hero: одна колонка, фото зверху */
+  .hero {
+    padding: 64px 0 80px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-photo {
+    order: -1;
+    width: min(320px, 80%);
+    margin: 0 auto;
+  }
+
+  .facts-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .job-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 28px;
+  }
+
+  .edu-grid,
+  .project-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* --- Смартфони (до 560px) --- */
+@media (max-width: 560px) {
+  :root {
+    --section-pad: 64px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .header-inner {
+    height: 72px;
+  }
+
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  .main-nav {
+    top: 72px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .greeting {
+    font-size: 22px;
+    margin-bottom: -20px;
+  }
+
+  .name {
+    font-size: 42px;
+  }
+
+  .role {
+    font-size: 18px;
+  }
+
+  .bio,
+  .about-text p {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .section-heading {
+    margin-bottom: 32px;
+  }
+
+  .facts-list strong {
+    font-size: 36px;
+  }
+
+  .deco-ring {
+    width: 96px;
+    height: 96px;
+    top: -24px;
+    right: -24px;
+  }
+
+  .edu-card,
+  .project-card {
+    padding: 24px;
+  }
+
+  .edu-card h3 {
+    font-size: 24px;
+  }
+
+  .contact-list p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .contact-list a {
+    font-size: 17px;
+    word-break: break-all;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
